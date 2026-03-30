@@ -22,7 +22,7 @@ public class AirlineGatewayApplication {
 	@Bean
 	public RouterFunction<ServerResponse> gatewayRoutes() {
 		return route("airline-main-api")
-				.route(path("/api/v1/**"), http())
+				.route(path("/**"), http())
 				.before(uri("http://localhost:8080"))
 				.build();
 	}
