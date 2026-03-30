@@ -14,7 +14,7 @@ import java.time.Duration;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-//@Component
+@Component
 public class RateLimitFilter implements Filter {
 
     // Her bağlanan kullanıcının IP adresine özel bir "Kova" oluşturuyoruz
@@ -22,7 +22,7 @@ public class RateLimitFilter implements Filter {
 
     private Bucket createNewBucket() {
         // KURAL: 1 Dakika içinde en fazla 3 isteğe izin ver (Test etmesi kolay olsun diye)
-        Bandwidth limit = Bandwidth.classic(100, Refill.greedy(100, Duration.ofMinutes(1)));
+        Bandwidth limit = Bandwidth.classic(3, Refill.greedy(3, Duration.ofMinutes(1)));
         return Bucket.builder().addLimit(limit).build();
     }
 
