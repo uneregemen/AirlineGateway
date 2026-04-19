@@ -6,7 +6,7 @@ spring:
     gateway:
       mvc:
         routes:
-          - id: airline-project
-            uri: ${BACKEND_URL:http://airline-app:8080}
+          - id: airline-system
+            uri: ${BACKEND_URL:http://airline-backend:8080}
             predicates:
               - Path=/**
