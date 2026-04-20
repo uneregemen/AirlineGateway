@@ -1,12 +1,2 @@
 server:
   port: 8081
-
-spring:
-  cloud:
-    gateway:
-      mvc:
-        routes:
-          - id: airline-system
-            uri: ${BACKEND_URL:http://airline-app:8080}
-            predicates:
-              - Path=/**

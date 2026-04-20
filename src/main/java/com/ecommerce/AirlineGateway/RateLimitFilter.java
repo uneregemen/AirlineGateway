@@ -20,8 +20,6 @@ public class RateLimitFilter implements Filter {
     private final Map<String, Bucket> cache = new ConcurrentHashMap<>();
 
     private Bucket createNewBucket() {
-        // PDF'teki kurala göre aslında "günde 3" olması isteniyor ancak test için "1
-        // dakikada 3" yapıldı.
         Bandwidth limit = Bandwidth.classic(3, Refill.greedy(3, Duration.ofMinutes(1)));
         return Bucket.builder().addLimit(limit).build();
     }
